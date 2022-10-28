@@ -20,6 +20,11 @@
 
 // Assignment code here
 
+let numberOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let lowerCaseOptions = ["a", "b", "c", "d", "e", "f", "g"];
+let upperCaseOptions = ["A", "B", "C", "D", "E", "F", "G"];
+let symbolOptions = ["#", "$", "&", "*"];
+
 function lengthOfPassword() {
   // 1 . length min 8 characters max 128
   let numInput = prompt("Enter password 8 128 characters");
@@ -38,18 +43,37 @@ function lengthOfPassword() {
 
 function characterTypes() {
   // 2. lowercase, uppercase, numeric, and/or special characters
+  let userChoice = [];
   let lowerCase = confirm("Do you want lowercase in password");
+  if (lowerCase) {
+    userChoice.push(lowerCaseOptions);
+  }
   let upperCase = confirm("Do you want uppercase in password");
+  if (upperCase) {
+    userChoice.push(upperCaseOptions);
+  }
   let numeric = confirm("Do you want numbers in password");
+  if (numeric) {
+    userChoice.push(numberOptions);
+  }
   let special = confirm("Do you want special characters in password");
+  if (special) {
+    userChoice.push(symbolOptions);
+  }
 
-  return [lowerCase, upperCase, numeric, special];
+  return userChoice;
 }
 
-function validateInput(arrChar) {
+function validateInput(userInputChoice) {
   // 3 . at least one character type should be selected after all input is entered.
 
-  console.log(length, arrChar);
+  while (userInputChoice.length === 0) {
+    alert("choose 1 item");
+    generatePassword();
+    return;
+  }
+
+  return userInputChoice;
 }
 
 function generatePassword() {
@@ -57,6 +81,7 @@ function generatePassword() {
   let length = lengthOfPassword();
   let charChoice = characterTypes();
   let validated = validateInput(charChoice);
+  console.log(validated);
 }
 
 function displayPassword() {
