@@ -20,10 +20,19 @@
 
 // Assignment code here
 
-let numberOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let lowerCaseOptions = ["a", "b", "c", "d", "e", "f", "g"];
-let upperCaseOptions = ["A", "B", "C", "D", "E", "F", "G"];
-let symbolOptions = ["#", "$", "&", "*"];
+const numberOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const specialCharOptions = ["#", "$", "&", "*", "%", "&"];
+// creates an array of 26 code to be used to generte upper and lower case characters
+const characterCodes = Array.from(Array(26)).map((_, i) => i + 97);
+const lowerCaseOptions = characterCodes.map((code) =>
+  String.fromCharCode(code)
+);
+
+const upperCaseOptions = lowerCaseOptions.map((low) => low.toLocaleUpperCase());
+
+function randomNumber() {
+  return;
+}
 
 function lengthOfPassword() {
   // 1 . length min 8 characters max 128
@@ -58,7 +67,7 @@ function characterTypes() {
   }
   let special = confirm("Do you want special characters in password");
   if (special) {
-    userChoice.push(symbolOptions);
+    userChoice.push(specialCharOptions);
   }
 
   return userChoice;
