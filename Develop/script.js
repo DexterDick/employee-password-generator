@@ -81,7 +81,6 @@ function validateInput(userInputChoice) {
     generatePassword();
     return;
   }
-
   return userInputChoice;
 }
 
@@ -91,21 +90,27 @@ function generatePassword() {
   let charChoice = characterTypes();
   let userChoiceList = validateInput(charChoice);
 
+  // console.log(userChoiceList[0][getRandomNumber(0, 8)]);
+
   let password = "";
 
   for (let i = 0; i < length; i += 1) {
     // 1 get random list of user selection
-    for (let j = 0; j < userChoiceList[i].length; j++) {
-      // 2 choose random item from random list
-      console.log(userChoiceList[i][j]);
-    }
+    // 2 choose random item from random list
+    // password += userChoiceList[i][getRandomNumber(0, userChoiceList.length)];
+    // }
     // 3 add to password string;
+
+    let rList = Math.floor(Math.random() * userChoiceList.length);
+    console.log("list" + rList);
+
+    // for (let j = 0; j < userChoiceList.length; j++) {
+    let rItem = Math.floor(Math.random() * (userChoiceList[rList].length - 1));
+    console.log("item " + rItem);
+
+    password += userChoiceList[rList][rItem];
   }
   return password;
-}
-
-function displayPassword() {
-  // 5. displayed in an alert or written to the page
 }
 
 // Get references to the #generate element
