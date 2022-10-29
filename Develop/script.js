@@ -30,8 +30,8 @@ const lowerCaseOptions = characterCodes.map((code) =>
 
 const upperCaseOptions = lowerCaseOptions.map((low) => low.toLocaleUpperCase());
 
-function randomNumber() {
-  return;
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 function lengthOfPassword() {
@@ -89,8 +89,19 @@ function generatePassword() {
   // 4. Generate password after all input validated
   let length = lengthOfPassword();
   let charChoice = characterTypes();
-  let validated = validateInput(charChoice);
-  console.log(validated);
+  let userChoiceList = validateInput(charChoice);
+
+  let password = "";
+
+  for (let i = 0; i < length; i += 1) {
+    // 1 get random list of user selection
+    for (let j = 0; j < userChoiceList[i].length; j++) {
+      // 2 choose random item from random list
+      console.log(userChoiceList[i][j]);
+    }
+    // 3 add to password string;
+  }
+  return password;
 }
 
 function displayPassword() {
