@@ -135,3 +135,13 @@ button[disabled] {
     font-size: 0.8rem;
   }
 }
+
+/* added extra media query to fix text size on smaller screens  */
+@media (max-width: 395px) {
+  h1 {
+    font-size: 1.85em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+}
